@@ -35,4 +35,24 @@ public void pintar (String novaCor)
  	{
 		this.cor = novaCor;
  	}
+public float getValor() {
+	return valor;
 }
+public void setValor(float valor) {
+	this.valor = valor;
+}
+public String getNome() {
+	return nome;
+}
+public float getPeso() {
+	return peso;
+}
+public String getFabricante() {
+	return fabricante;
+}
+public String getCor() {
+	return cor;
+}
+
+}
+
