@@ -2,11 +2,11 @@ package br.com.qm.oo.contabancaria;
 
 public class ContaBancaria
 {
-	int nrConta;	
-	String titular;
-	float saldo;
+	private int nrConta;	
+	private String titular;
+	private float saldo;
 	
-	public ContaBancaria(int nrConta, String titular,float saldo)
+	public ContaBancaria(int nrConta, String titular)
 		{
 			this.nrConta = nrConta;			
 			this.titular = titular;

@@ -6,7 +6,7 @@ public class cartaoCredito
 	float saldo;
 	String nomeCliente;
 	
-	public cartaoCredito(float limie,String nomeCliente)
+	public cartaoCredito(float limite,String nomeCliente)
 	{
 		this.limite = limite;
 		this.saldo = 0;
@@ -16,7 +16,9 @@ public class cartaoCredito
 	public void aumentaLimite (float valorAcrescido)
 	{		
 		if (valorAcrescido > 0) 
-			{this.limite += valorAcrescido;}
+			{
+			this.limite += valorAcrescido;
+			}
 		
 	}
 	
