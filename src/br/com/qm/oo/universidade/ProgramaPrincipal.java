@@ -1,14 +1,9 @@
 package br.com.qm.oo.universidade;
-
 import java.util.Scanner;
-
 public class ProgramaPrincipal 
-{
-
-	
+{	
 	public static boolean cadastraProfessor(Scanner teclado, Professor[] professores)
-	{
-		
+	{		
 		teclado.nextLine();
 		System.out.println("Vamos cadastrar o professor: ");
 		System.out.println("Digite o nome do professor: ");
@@ -26,23 +21,18 @@ public class ProgramaPrincipal
 		String nivelGraduacao = teclado.next();
 		System.out.println("Digite a disciplina ministrada: ");
 		teclado.nextLine();
-		String disciplina = teclado.nextLine();
-		
-		Professor professorCadastrado = new Professor(nome, cpf, nroRegistro, orgaoLotacao, salario, nivelGraduacao, disciplina, 
-							0, 0);
+		String disciplina = teclado.nextLine();		
+		Professor professorCadastrado = new Professor(nome, cpf, nroRegistro, orgaoLotacao, salario, nivelGraduacao, disciplina,0, 0);
 		for (int i = 0; i < professores.length; i++) 
-		{
-		
+		{		
 			if (professores[i] == null) 
 			{
 				professores[i] = professorCadastrado;
 				return true;
 			}
-		}
-		
+		}		
 		return false;
-	}
-	
+	}	
 	public static void listaProfessores(Professor[] professores)
 	{
 		for (Professor professor : professores) 
@@ -52,53 +42,39 @@ public class ProgramaPrincipal
 				System.out.println(professor);
 			}
 		}
-	}
-	
+	}	
 	public static Professor buscaProfessor(Scanner teclado, Professor[] professores) 
-	{
-		
+	{		
 		System.out.println("Digite o CPF pelo qual você quer pesquisar: ");
 		String cpfConsultado = teclado.next();
 		for (int i = 0; i < professores.length; i++) 
-		{
-			
+		{			
 			if (professores[i] != null 
 					&& professores[i].getCpf().equals(cpfConsultado))
 			{
 				return professores[i];
-			}
-			
-		}
-		
+			}			
+		}		
 		return null;
-	}
-	
+	}	
 	public static boolean removeProfessor(Scanner teclado, Professor[] professores) 
-	{
-		
+	{		
 		System.out.println("Digite o CPF pelo qual você quer remover: ");
-		String cpfConsultadoRemocao = teclado.next();
-		
+		String cpfConsultadoRemocao = teclado.next();		
 		for (int i = 0; i < professores.length; i++)
-		{
-			
-			if (professores[i] != null 
-					&& professores[i].getCpf().equals(cpfConsultadoRemocao))
+		{			
+			if (professores[i] != null && professores[i].getCpf().equals(cpfConsultadoRemocao))
 			{
 				professores[i] = null;
 				return true;
-			}
-			
-		}
-		
+			}			
+		}		
 		return false;
-	}
-	
+	}	
 	public static void menuProfessores(Scanner teclado, Professor[] professores)
-	{
-		
-		int opcaoMenuProfessores = 0;
-		do {
+	{		
+		int opcaoMenuProfessores = 0;do 
+		{
 			System.out.println("--- Menu de professores ---");
 			System.out.println("1 - Cadastrar um professor");
 			System.out.println("2 - Listar todos os professores");
@@ -106,8 +82,7 @@ public class ProgramaPrincipal
 			System.out.println("4 - Remover um professor");
 			System.out.println("5 - Aumentar o salário");
 			System.out.println("0 - Voltar ao menu anterior");
-			opcaoMenuProfessores = teclado.nextInt();
-			
+			opcaoMenuProfessores = teclado.nextInt();			
 			switch (opcaoMenuProfessores) 
 			{
 				case 1: 
@@ -144,8 +119,7 @@ public class ProgramaPrincipal
 					{
 						System.out.println("Professor não encontrado!");
 					}
-					break;
-					
+					break;					
 				case 5:
 					System.out.println("-- Aumento de salário --");
 					Professor professorAumento = buscaProfessor(teclado, professores);
@@ -164,18 +138,12 @@ public class ProgramaPrincipal
 					System.out.println("Menu professores -> Opção inválida");
 			}
 			
-		} while (opcaoMenuProfessores != 0);
-		
-		
-	}
-	
-	private static void imprimirFolha(Professor[] professores, Coordenador[] coordenadores,
-			FuncionarioAdministrativo[] funcionariosAdm)
-	{
-		
+		} while (opcaoMenuProfessores != 0);		
+	}	
+	private static void imprimirFolha(Professor[] professores, Coordenador[] coordenadores,FuncionarioAdministrativo[] funcionariosAdm)
+	{		
 		System.out.println("--- FOLHA DE PAGAMENTO ---");
-		System.out.println("--- Professores ---");
-		
+		System.out.println("--- Professores ---");		
 		double total = 0;
 		for (Professor professor : professores)
 		{
@@ -184,8 +152,7 @@ public class ProgramaPrincipal
 				total += professor.getSalario();
 				System.out.printf("\n %s ------------------ R$%.2f", professor.getNome(), professor.getSalario());
 			}
-		}
-		
+		}		
 		System.out.println("\n--- Coordenadores ---");
 		for (Coordenador coordenador : coordenadores) 
 		{
@@ -194,8 +161,7 @@ public class ProgramaPrincipal
 				total += coordenador.getSalario();
 				System.out.printf("\n %s ------------------ R$%.2f", coordenador.getNome(), coordenador.getSalario());
 			}
-		}
-		
+		}		
 		System.out.println("\n--- Funcionários Administrativos ---");
 		for (FuncionarioAdministrativo funcionarioAdm : funcionariosAdm) 
 		{
@@ -204,12 +170,9 @@ public class ProgramaPrincipal
 				total += funcionarioAdm.getSalario();
 				System.out.printf("\n %s ------------------ R$%.2f", funcionarioAdm.getNome(), funcionarioAdm.getSalario());
 			}
-		}
-		
-		
+		}		
 		System.out.printf("\nTotal de pagamentos deste mês ----------- R$%.2f\n", total);
-	}
-	
+	}	
 	public static void main(String[] args)
 	{		
 		Scanner teclado = new Scanner(System.in);
@@ -219,26 +182,19 @@ public class ProgramaPrincipal
 		System.out.println("Quantos cordenadores podem existir na sua universidade?");
 		int qtdCoordenadores = teclado.nextInt();
 		System.out.println("Quantos funcionários administrativos podem existir na sua universidade?");
-		int qtdFuncionariosAdm = teclado.nextInt();
-		
+		int qtdFuncionariosAdm = teclado.nextInt();		
 		Professor[] professores = new Professor[qtdProfessores];
 		Coordenador[] coordenadores = new Coordenador[qtdCoordenadores];
-		FuncionarioAdministrativo[] funcionariosAdm = new FuncionarioAdministrativo[qtdFuncionariosAdm];
-		
-		
-		
-		int opcaoMenuPrincipal = 0;
-		do
+		FuncionarioAdministrativo[] funcionariosAdm = new FuncionarioAdministrativo[qtdFuncionariosAdm];		
+		int opcaoMenuPrincipal = 0;do
 		{
 			System.out.println("--- Funcionalidades por tipo de funcionario ---");
 			System.out.println("1 - Professores");
 			System.out.println("2 - Coordenadores");
 			System.out.println("3 - Funcionários Administrativos");
 			System.out.println("4 - Imprimir folha de pagamento");
-			System.out.println("0 - Para encerrar");
-			
-			opcaoMenuPrincipal = teclado.nextInt();
-			
+			System.out.println("0 - Para encerrar");			
+			opcaoMenuPrincipal = teclado.nextInt();		
 			switch (opcaoMenuPrincipal) 
 			{
 				case 1:
@@ -257,11 +213,7 @@ public class ProgramaPrincipal
 				System.out.println("Opção inválida!");
 			}
 			
-		} while (opcaoMenuPrincipal != 0);
-		
-		
+		} while (opcaoMenuPrincipal != 0);		
 		teclado.close();
-	}
-
-	
+	}	
 }
