@@ -5,12 +5,12 @@ public class ProgramaPrincipal
 	public static boolean cadastraProfessor(Scanner teclado, Professor[] professores)
 	{		
 		teclado.nextLine();
-		System.out.println("Vamos cadastrar o professor: ");
+		System.out.println("Cadastro de professor: ");
 		System.out.println("Digite o nome do professor: ");
 		String nome = teclado.nextLine();
-		System.out.println("Digite o CPF do professor: ");
+		System.out.println("Digite o CPF: ");
 		String cpf = teclado.next();
-		System.out.println("Digite o número de registro do professor: ");
+		System.out.println("Digite o número de registro: ");
 		int nroRegistro = teclado.nextInt();
 		teclado.nextLine();
 		System.out.println("Digite o orgão de lotação: ");
@@ -45,7 +45,7 @@ public class ProgramaPrincipal
 	}	
 	public static Professor buscaProfessor(Scanner teclado, Professor[] professores) 
 	{		
-		System.out.println("Digite o CPF pelo qual você quer pesquisar: ");
+		System.out.println("Digite o CPF para pesquisar: ");
 		String cpfConsultado = teclado.next();
 		for (int i = 0; i < professores.length; i++) 
 		{			
@@ -59,7 +59,7 @@ public class ProgramaPrincipal
 	}	
 	public static boolean removeProfessor(Scanner teclado, Professor[] professores) 
 	{		
-		System.out.println("Digite o CPF pelo qual você quer remover: ");
+		System.out.println("Digite o CPF para remoção: ");
 		String cpfConsultadoRemocao = teclado.next();		
 		for (int i = 0; i < professores.length; i++)
 		{			
@@ -76,22 +76,22 @@ public class ProgramaPrincipal
 		int opcaoMenuProfessores = 0;do 
 		{
 			System.out.println("--- Menu de professores ---");
-			System.out.println("1 - Cadastrar um professor");
+			System.out.println("1 - Cadastrar professor");
 			System.out.println("2 - Listar todos os professores");
 			System.out.println("3 - Consultar professor por CPF");
-			System.out.println("4 - Remover um professor");
-			System.out.println("5 - Aumentar o salário");
+			System.out.println("4 - Remover professor");
+			System.out.println("5 - Reajustar salário");
 			System.out.println("0 - Voltar ao menu anterior");
 			opcaoMenuProfessores = teclado.nextInt();			
 			switch (opcaoMenuProfessores) 
 			{
 				case 1: 
-					System.out.println("-- Cadastra professor --");
+					System.out.println("-- Cadastrar professor --");
 					if (cadastraProfessor(teclado, professores))
 					{
 						System.out.println("Cadastro realizado com sucesso!");
 					} else {
-						System.out.println("Falha ao cadastra professor!");
+						System.out.println("Falha ao tentar cadastrar professor!");
 					}
 					break;
 				case 2:
@@ -100,7 +100,7 @@ public class ProgramaPrincipal
 					System.out.println("----");
 					break;
 				case 3:
-					System.out.println("-- Consulta professor --");
+					System.out.println("-- Consultar professor --");
 					Professor professorConsultado = buscaProfessor(teclado, professores);
 					if ( professorConsultado != null)
 					{
@@ -111,7 +111,7 @@ public class ProgramaPrincipal
 					}
 					break;
 				case 4: 
-					System.out.println("-- Remove professor --");
+					System.out.println("-- Remover professor --");
 					if (removeProfessor(teclado, professores))
 					{
 						System.out.println("Professor removido com sucesso!");
@@ -121,7 +121,7 @@ public class ProgramaPrincipal
 					}
 					break;					
 				case 5:
-					System.out.println("-- Aumento de salário --");
+					System.out.println("-- Reajuste de salário --");
 					Professor professorAumento = buscaProfessor(teclado, professores);
 					if (professorAumento != null)
 					{
@@ -193,7 +193,7 @@ public class ProgramaPrincipal
 			System.out.println("2 - Coordenadores");
 			System.out.println("3 - Funcionários Administrativos");
 			System.out.println("4 - Imprimir folha de pagamento");
-			System.out.println("0 - Para encerrar");			
+			System.out.println("0 - Encerrar programa");			
 			opcaoMenuPrincipal = teclado.nextInt();		
 			switch (opcaoMenuPrincipal) 
 			{
@@ -213,7 +213,7 @@ public class ProgramaPrincipal
 				System.out.println("Opção inválida!");
 			}
 			
-		} while (opcaoMenuPrincipal != 0);		
+		} while (opcaoMenuPrincipal != 0);	
 		teclado.close();
 	}	
 }

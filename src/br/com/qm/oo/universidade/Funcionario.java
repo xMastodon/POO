@@ -46,6 +46,7 @@ public class Funcionario
 	{
 		this.salario = this.salario * 1.1;		
 	}	
+	@Override
 	public String toString()
 	{
 		return "Funcionario [nome=" + nome + ", cpf=" + cpf + ", nroRegistro=" + nroRegistro + ", orgaoLotacao="

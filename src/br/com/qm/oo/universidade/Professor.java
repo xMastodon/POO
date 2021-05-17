@@ -50,9 +50,10 @@ public class Professor extends Funcionario
 	{
 		this.qtdTurmas = qtdTurmas;
 	}	
+	@Override
 	public String toString()
 	{
-		return "Professor [nivelGraduacao=" + nivelGraduacao + ", disciplina=" + disciplina + ", qtdAlunos=" + qtdAlunos
-				+ ", qtdTurmas=" + qtdTurmas + ", toString()=" + super.toString() + "]";
+		return "Professor Nível de graduacao=" + nivelGraduacao + ",\n Disciplina=" + disciplina + ",\n Quantidade de alunos=" + qtdAlunos
+				+ ",\n Quantidade de turmas=" + qtdTurmas + ", toString()=" + super.toString() + "]";
 	}	
 }

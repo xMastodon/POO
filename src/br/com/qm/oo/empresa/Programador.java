@@ -15,7 +15,7 @@ public class Programador extends Funcionario
 		this.especialidade = especialidade;
 	}
 	
-	
+	@Override
 	public void aumentaSalario()
 	{
 		if (this.linguagem == "Java")
