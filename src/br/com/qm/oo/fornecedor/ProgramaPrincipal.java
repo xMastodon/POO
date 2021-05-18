@@ -18,7 +18,7 @@ public class ProgramaPrincipal
 	public static Empregado cadastrarEmpregado(Scanner teclado, boolean administrador)
 	{
 		teclado.nextLine();
-		System.out.println("Digite o nome do empregado: ");
+		System.out.println("Digite o nome do colaborador: ");
 		String nome = teclado.nextLine();
 		System.out.println("Digite o endereco: ");
 		String endereco = teclado.nextLine();
@@ -28,7 +28,7 @@ public class ProgramaPrincipal
 		int codigoSetor = teclado.nextInt();
 		System.out.println("Digite o salário base: ");
 		double salarioBase = teclado.nextDouble();
-		System.out.println("Digite o imposto: ");
+		System.out.println("Digite o valor do imposto: ");
 		double imposto = teclado.nextDouble();
 		
 		if (administrador)
