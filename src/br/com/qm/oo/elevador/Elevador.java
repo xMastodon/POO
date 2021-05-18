@@ -22,7 +22,7 @@ public class Elevador
 			qtdPessoas++;
 			return;
 		}		
-		throw new CargaElevadorException("O elevador está cheio!");
+		throw new CargaElevadorException("O elevador está em sua capacidade máxima!");
 	}	
 	public void sai() throws CargaElevadorException
 	{
