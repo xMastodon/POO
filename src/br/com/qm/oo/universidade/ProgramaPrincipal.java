@@ -1,16 +1,20 @@
 package br.com.qm.oo.universidade;
+
 import java.util.Scanner;
-public class ProgramaPrincipal 
-{	
+
+public class ProgramaPrincipal
+{
+
+	
 	public static boolean cadastraProfessor(Scanner teclado, Professor[] professores)
 	{		
 		teclado.nextLine();
-		System.out.println("Cadastro de professor: ");
+		System.out.println("Vamos cadastrar o professor: ");
 		System.out.println("Digite o nome do professor: ");
 		String nome = teclado.nextLine();
-		System.out.println("Digite o CPF: ");
+		System.out.println("Digite o CPF do professor: ");
 		String cpf = teclado.next();
-		System.out.println("Digite o número de registro: ");
+		System.out.println("Digite o número de registro do professor: ");
 		int nroRegistro = teclado.nextInt();
 		teclado.nextLine();
 		System.out.println("Digite o orgão de lotação: ");
@@ -21,77 +25,93 @@ public class ProgramaPrincipal
 		String nivelGraduacao = teclado.next();
 		System.out.println("Digite a disciplina ministrada: ");
 		teclado.nextLine();
-		String disciplina = teclado.nextLine();		
-		Professor professorCadastrado = new Professor(nome, cpf, nroRegistro, orgaoLotacao, salario, nivelGraduacao, disciplina,0, 0);
-		for (int i = 0; i < professores.length; i++) 
-		{		
-			if (professores[i] == null) 
+		String disciplina = teclado.nextLine();
+		
+		Professor professorCadastrado = new Professor(nome, cpf, nroRegistro, orgaoLotacao, salario, nivelGraduacao, disciplina, 
+							0, 0);
+		for (int i = 0; i < professores.length; i++)
+		{
+		
+			if (professores[i] == null)
 			{
 				professores[i] = professorCadastrado;
 				return true;
 			}
-		}		
+		}
+		
 		return false;
-	}	
+	}
+	
 	public static void listaProfessores(Professor[] professores)
 	{
-		for (Professor professor : professores) 
+		for (Professor professor : professores)
 		{
 			if (professor != null)
 			{
 				System.out.println(professor);
 			}
 		}
-	}	
-	public static Professor buscaProfessor(Scanner teclado, Professor[] professores) 
-	{		
-		System.out.println("Digite o CPF para pesquisar: ");
+	}
+	
+	public static Professor buscaProfessor(Scanner teclado, Professor[] professores)
+	{
+		
+		System.out.println("Digite o CPF pelo qual você quer pesquisar: ");
 		String cpfConsultado = teclado.next();
-		for (int i = 0; i < professores.length; i++) 
+		for (int i = 0; i < professores.length; i++)
 		{			
 			if (professores[i] != null 
 					&& professores[i].getCpf().equals(cpfConsultado))
 			{
 				return professores[i];
-			}			
-		}		
+			}
+			
+		}
+		
 		return null;
-	}	
-	public static boolean removeProfessor(Scanner teclado, Professor[] professores) 
+	}
+	
+	public static boolean removeProfessor(Scanner teclado, Professor[] professores)
 	{		
-		System.out.println("Digite o CPF para remoção: ");
-		String cpfConsultadoRemocao = teclado.next();		
+		System.out.println("Digite o CPF pelo qual você quer remover: ");
+		String cpfConsultadoRemocao = teclado.next();
+		
 		for (int i = 0; i < professores.length; i++)
 		{			
-			if (professores[i] != null && professores[i].getCpf().equals(cpfConsultadoRemocao))
+			if (professores[i] != null 
+					&& professores[i].getCpf().equals(cpfConsultadoRemocao))
 			{
 				professores[i] = null;
 				return true;
 			}			
 		}		
 		return false;
-	}	
+	}
+	
 	public static void menuProfessores(Scanner teclado, Professor[] professores)
 	{		
-		int opcaoMenuProfessores = 0;do 
+		int opcaoMenuProfessores = 0;do
 		{
 			System.out.println("--- Menu de professores ---");
-			System.out.println("1 - Cadastrar professor");
+			System.out.println("1 - Cadastrar um professor");
 			System.out.println("2 - Listar todos os professores");
 			System.out.println("3 - Consultar professor por CPF");
-			System.out.println("4 - Remover professor");
-			System.out.println("5 - Reajustar salário");
+			System.out.println("4 - Remover um professor");
+			System.out.println("5 - Aumentar o salário");
 			System.out.println("0 - Voltar ao menu anterior");
-			opcaoMenuProfessores = teclado.nextInt();			
-			switch (opcaoMenuProfessores) 
+			opcaoMenuProfessores = teclado.nextInt();
+			
+			switch (opcaoMenuProfessores)
 			{
 				case 1: 
-					System.out.println("-- Cadastrar professor --");
+					System.out.println("-- Cadastra professor --");
 					if (cadastraProfessor(teclado, professores))
 					{
 						System.out.println("Cadastro realizado com sucesso!");
-					} else {
-						System.out.println("Falha ao tentar cadastrar professor!");
+					}
+					else
+					{
+						System.out.println("Falha ao cadastra professor!");
 					}
 					break;
 				case 2:
@@ -100,34 +120,38 @@ public class ProgramaPrincipal
 					System.out.println("----");
 					break;
 				case 3:
-					System.out.println("-- Consultar professor --");
+					System.out.println("-- Consulta professor --");
 					Professor professorConsultado = buscaProfessor(teclado, professores);
 					if ( professorConsultado != null)
 					{
 						System.out.println(professorConsultado);
-					} else
+					} 
+					else
 					{
 						System.out.println("Professor não encontrado!");
 					}
 					break;
 				case 4: 
-					System.out.println("-- Remover professor --");
+					System.out.println("-- Remove professor --");
 					if (removeProfessor(teclado, professores))
 					{
 						System.out.println("Professor removido com sucesso!");
-					} else 
+					}
+					else
 					{
 						System.out.println("Professor não encontrado!");
 					}
-					break;					
+					break;
+					
 				case 5:
-					System.out.println("-- Reajuste de salário --");
+					System.out.println("-- Aumento de salário --");
 					Professor professorAumento = buscaProfessor(teclado, professores);
 					if (professorAumento != null)
 					{
 						professorAumento.aumentaSalario();
 						System.out.println("Salário do "  + professorAumento.getNome() + " aumentado com sucesso!");
-					} else 
+					}
+					else
 					{
 						System.out.println("Professor não encontrado!");
 					}
@@ -139,39 +163,91 @@ public class ProgramaPrincipal
 			}
 			
 		} while (opcaoMenuProfessores != 0);		
-	}	
-	private static void imprimirFolha(Professor[] professores, Coordenador[] coordenadores,FuncionarioAdministrativo[] funcionariosAdm)
-	{		
+	}
+	
+	public static void imprimirFolha(Professor[] professores, Coordenador[] coordenadores,
+			FuncionarioAdministrativo[] funcionariosAdm)
+	{
+		
 		System.out.println("--- FOLHA DE PAGAMENTO ---");
-		System.out.println("--- Professores ---");		
+		System.out.println("--- Professores ---");
+		
 		double total = 0;
 		for (Professor professor : professores)
 		{
-			if (professor != null) 
+			if (professor != null)
 			{
 				total += professor.getSalario();
 				System.out.printf("\n %s ------------------ R$%.2f", professor.getNome(), professor.getSalario());
 			}
-		}		
+		}
+		
 		System.out.println("\n--- Coordenadores ---");
-		for (Coordenador coordenador : coordenadores) 
+		for (Coordenador coordenador : coordenadores)
 		{
 			if (coordenador != null) 
 			{
 				total += coordenador.getSalario();
 				System.out.printf("\n %s ------------------ R$%.2f", coordenador.getNome(), coordenador.getSalario());
 			}
-		}		
+		}
+		
 		System.out.println("\n--- Funcionários Administrativos ---");
-		for (FuncionarioAdministrativo funcionarioAdm : funcionariosAdm) 
+		for (FuncionarioAdministrativo funcionarioAdm : funcionariosAdm)
 		{
-			if (funcionarioAdm != null) 
+			if (funcionarioAdm != null)
 			{
 				total += funcionarioAdm.getSalario();
 				System.out.printf("\n %s ------------------ R$%.2f", funcionarioAdm.getNome(), funcionarioAdm.getSalario());
 			}
 		}		
 		System.out.printf("\nTotal de pagamentos deste mês ----------- R$%.2f\n", total);
+	}
+	
+	public static void menuCoordenadores(Scanner teclado, Coordenador[] coordenadores, Professor[] professores)
+	{		
+		int opcaoMenuCoordenadores = 0;do
+		{
+			System.out.println("--- Menu Coordenadores ---");
+			System.out.println("1 - Para adicionar um coordenador");
+			System.out.println("2 - Para listar os coordenadores");
+			System.out.println("3 - Para consultar um coordenador pelo cpf");
+			System.out.println("4 - Para remover um coordenador");
+			System.out.println("5 - Para adicionar um professor à lista de um coordenador");
+			System.out.println("0 - Para voltar ao menu anterior");
+			
+			
+			opcaoMenuCoordenadores = teclado.nextInt();
+			switch (opcaoMenuCoordenadores)
+			{
+				case 1:
+					Coordenador coordenador = new Coordenador("Rogério", "0003", 541, "Faculdade de Computação", 50000);
+					coordenadores[0] = coordenador;
+					System.out.println("Coordenador adicionado com sucesso");
+					break;
+				case 2:
+					System.out.println(coordenadores[0]);
+					break;
+				case 5:
+					Coordenador cordenadorSupervisor = coordenadores[0];
+					Professor professorAdicionado = buscaProfessor(teclado, professores);	
+					try
+					{					
+						cordenadorSupervisor.adicionaProfessor(professorAdicionado);					
+					}
+					catch (UniversidadeException e) 
+					{
+						System.out.println(e.getMensagem());
+					}
+					break;
+				case 0:
+					System.out.println("Retornando ao menu anterior");
+					break;
+				default:
+					System.out.println("Oção inválida");
+			}	
+			
+		} while (opcaoMenuCoordenadores != 0);				
 	}	
 	public static void main(String[] args)
 	{		
@@ -193,15 +269,16 @@ public class ProgramaPrincipal
 			System.out.println("2 - Coordenadores");
 			System.out.println("3 - Funcionários Administrativos");
 			System.out.println("4 - Imprimir folha de pagamento");
-			System.out.println("0 - Encerrar programa");			
-			opcaoMenuPrincipal = teclado.nextInt();		
-			switch (opcaoMenuPrincipal) 
-			{
+			System.out.println("0 - Para encerrar");
+			
+			opcaoMenuPrincipal = teclado.nextInt();
+			
+			switch (opcaoMenuPrincipal) {
 				case 1:
 					menuProfessores(teclado, professores);
 					break;
 				case 2:
-					//menuCoordenadores();
+					menuCoordenadores(teclado, coordenadores, professores);
 					break;
 				case 3: 
 					//menuFuncionariosAdm();
@@ -213,7 +290,9 @@ public class ProgramaPrincipal
 				System.out.println("Opção inválida!");
 			}
 			
-		} while (opcaoMenuPrincipal != 0);	
+		}
+		while (opcaoMenuPrincipal != 0);		
 		teclado.close();
-	}	
+	}
+
 }
